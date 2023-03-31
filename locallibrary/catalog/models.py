@@ -40,6 +40,8 @@ class Language(models.Model):
         return self.name
 
 
+
+
 class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     book = models.ForeignKey(Book, on_delete=models.RESTRICT, null=True, help_text='Unique ID for this particular '
@@ -61,7 +63,7 @@ class BookInstance(models.Model):
         ordering = ['due_back']
 
     def __str__(self):
-        return f'{self.id} ({self.book.title})'
+        return f'{self.id}-{self.book}-({self.book.title})'
 
 
 class Author(models.Model):
